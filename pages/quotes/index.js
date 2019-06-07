@@ -5,15 +5,14 @@ class Quotes extends React.Component {
     const client = createClient();
   
     const entries = await client.getEntries({
-      'content_type': 'blogPost'
+      'content_type': 'story'
     });
-    // console.log(entries.items[0])
     return { entries: entries.items }
   }
 
   render() {
     const items = this.props.entries.map((item, key) => 
-      <li>{item.fields.title}</li>
+      <li>{item.fields.personName}</li>
     )
 
     return (
@@ -22,6 +21,9 @@ class Quotes extends React.Component {
         <ul>
           {items}
         </ul>
+        <video controls>
+          <source src="http://videos.ctfassets.net/5mljqrbplngz/3E9akQxSVethgU0tJri0Ol/2f17f1518d786325fcc3f8ff53b69b5c/LOOK_PLAY_37.1_REV.mp4" type="video/mp4"></source>
+        </video>
       </div>
     )
   }
